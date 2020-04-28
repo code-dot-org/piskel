@@ -3,6 +3,8 @@ describe('PiskelDatabase test', function () {
   // Test object.
   var piskelDatabase;
 
+  var originalTimeout;
+
   var _toSnapshot = function (session_id, name, description, date, serialized) {
     return {
       session_id: session_id,
@@ -44,6 +46,9 @@ describe('PiskelDatabase test', function () {
     var dbName = pskl.database.PiskelDatabase.DB_NAME;
     var req = window.indexedDB.deleteDatabase(dbName);
     req.onsuccess = done;
+
+    originalTimeout = jasmine.DEFAULT_TIMEOUT_INTERVAL;
+    jasmine.DEFAULT_TIMEOUT_INTERVAL = 10000;
   });
 
   afterEach(function () {
@@ -51,6 +56,7 @@ describe('PiskelDatabase test', function () {
     if (piskelDatabase && piskelDatabase.db) {
       piskelDatabase.db.close();
     }
+    jasmine.DEFAULT_TIMEOUT_INTERVAL = originalTimeout;
   });
 
   it('initializes the DB and returns a promise', function (done) {
