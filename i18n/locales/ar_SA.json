@@ -1,0 +1,13 @@
+{
+  "colorSwapDrawingTool": "قم بتلوين كل وحدات البكسل ا(لخلايا) بنفس اللون",
+  "colorSwapDrawingToolDescriptorApplyToAllFrames": "طبق السابق على جميع الاطارات",
+  "ditheringDrawingTool": "اداة التردد",
+  "eraserDrawingTool": "الممحاه",
+  "lightenDrawingToolDescriptorApplyOncePerPixel": "طبق على وحدة بكسل واحدة فقط (خلية واحدة)",
+  "moveDrawingToolDescriptorApplyToAllFrames": "طبق السابق على جميع الاطارات",
+  "centerTransformToolDescriptorApplyToAllFrames": "طبق السابق على جميع الاطارات",
+  "rotateTransformToolDescriptorApplyToAllFrames": "طبق السابق على جميع الاطارات",
+  "flipTransformToolDescriptorApplyToAllFrames": "طبق السابق على جميع الاطارات",
+  "exportSettingSectionTitle": "تصدير",
+  "gifExportSettingSectionDownload": "تنزيل"
+}
