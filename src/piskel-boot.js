@@ -66,6 +66,7 @@
         scriptIndex ++;
       }
     };
+    loadScript('i18n/i18n.js');
     loadScript('piskel-script-list.js', 'loadNextScript()');
 
     var styles;

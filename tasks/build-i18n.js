@@ -3,7 +3,7 @@ module.exports = function(grunt) {
   var path = require('path');
   var MessageFormat = require('messageformat');
 
-  grunt.registerMultiTask('build-i18n', 'Compile i18n strings!', function() {
+  grunt.registerMultiTask('format-i18n', 'Compile i18n strings!', function() {
     this.files.forEach(function(file) {
       file.src.forEach(function(src) {
        // the locale is in the file name, i.e. i18n/locales/en_US.json. This returns the string "en_US".

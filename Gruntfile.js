@@ -145,8 +145,8 @@ module.exports = function(grunt) {
       }
     },
 
-    'build-i18n' : {
-      js: {
+    'format-i18n' : {
+      all: {
         files: [
           {
             expand: true,
@@ -159,11 +159,18 @@ module.exports = function(grunt) {
     },
 
     concat : {
+      i18n: {
+        options : {
+          separator : ';'
+        },
+        src: ['dest/tmp/i18n/locales/*.js'],
+        dest : 'dest/tmp/i18n/i18n.js'
+      },
       js : {
         options : {
           separator : ';'
         },
-        src : [piskelScripts, 'dest/tmp/i18n/locales/*.js'],
+        src : [piskelScripts, 'dest/tmp/i18n/i18n.js'],
         dest : 'dest/prod/js/piskel-packaged' + version + '.js'
       },
       css : {
@@ -253,6 +260,7 @@ module.exports = function(grunt) {
           {src: ['dest/tmp/index.html'], dest: 'dest/dev/index.html'},
           {src: ['src/piskel-script-list.js'], dest: 'dest/dev/piskel-script-list.js'},
           {src: ['src/piskel-style-list.js'], dest: 'dest/dev/piskel-style-list.js'},
+          {src: ['dest/tmp/i18n/i18n.js'], dest: 'dest/dev/i18n/i18n.js'},
           {expand: true, src: ['js/**'], cwd: 'src/', dest: 'dest/dev/', filter: 'isFile'},
           {expand: true, src: ['css/**'], cwd: 'src/', dest: 'dest/dev/', filter: 'isFile'},
           {expand: true, src: ['img/**'], cwd: 'src/', dest: 'dest/dev/', filter: 'isFile'},
@@ -347,11 +355,14 @@ module.exports = function(grunt) {
   // Used by optional precommit hook
   grunt.registerTask('precommit', ['test']);
 
+  // Create i18n.js which has all the translatable strings
+  grunt.registerTask('build-i18n', ['format-i18n', 'concat:i18n']);
+
   // BUILD TASKS
   grunt.registerTask('build-index.html', ['includereplace']);
-  grunt.registerTask('merge-statics', ['build-i18n:js', 'concat:js', 'concat:css', 'uglify']);
+  grunt.registerTask('merge-statics', ['build-i18n', 'concat:js', 'concat:css', 'uglify']);
   grunt.registerTask('build',  ['clean:prod', 'sprite', 'merge-statics', 'build-index.html', 'replace:mainPartial', 'replace:css', 'copy:prod']);
-  grunt.registerTask('build-dev',  ['clean:dev', 'sprite', 'build-index.html', 'copy:dev']);
+  grunt.registerTask('build-dev',  ['clean:dev', 'sprite', 'build-index.html', 'build-i18n', 'copy:dev']);
   grunt.registerTask('desktop', ['clean:desktop', 'default', 'nwjs:windows']);
   grunt.registerTask('desktop-mac', ['clean:desktop', 'default', 'nwjs:macos']);
   grunt.registerTask('desktop-mac-old', ['clean:desktop', 'default', 'replace:desktop', 'nwjs:macos_old']);
