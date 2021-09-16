@@ -39,7 +39,7 @@ casper.test.begin('Test resize feature works', 16 , function(test) {
     test.assertEquals(getValue('[name="resize-width"]'), "2560", 'Resize width is 2560px');
     test.assertEquals(getValue('[name="resize-height"]'), "2560", 'Resize height is 2560px');
 
-    casper.click('.resize-button');
+    casper.click('#resize-canvas-form .resize-button');
     // Resizing the piskel should close the panel automatically
     casper.waitForSelector('[data-pskl-controller="settings"]:not(.expanded)', onDrawerClosed, test.timeout, 10000);
   }

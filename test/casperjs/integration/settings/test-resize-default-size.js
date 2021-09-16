@@ -34,7 +34,7 @@ casper.test.begin('Test updating default size works', 14 , function(test) {
     test.assertEquals(getValue('[name="default-width"]'), "2561", 'Default width is 2561px');
     test.assertEquals(getValue('[name="default-height"]'), "2562", 'Default height is 2562px');
 
-    casper.click('.default-size-button');
+    casper.click('#default-size-form .resize-button');
     // Changing the piskel default size should close the panel automatically
     casper.waitForSelector('[data-pskl-controller="settings"]:not(.expanded)', onDrawerClosed, test.timeout, 10000);
   }

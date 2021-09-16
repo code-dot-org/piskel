@@ -46,7 +46,7 @@ casper.test.begin('Test resize content works, and check the output', 18, functio
   }
 
   function onResizeOriginDisabled() {
-    casper.click('.resize-button');
+    casper.click('#resize-canvas-form .resize-button');
     // Resizing the piskel should close the panel automatically
     casper.waitForSelector('[data-pskl-controller="settings"]:not(.expanded)', onDrawerClosed, test.timeout, 10000);
   }

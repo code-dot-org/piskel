@@ -45,7 +45,7 @@ casper.test.begin('Test resize feature works, and check the output', 19, functio
     test.assertExists('.resize-content-checkbox', 'Check if resize ratio checkbox is available');
     test.assert(!isChecked('.resize-content-checkbox'), 'Keep content checkbox is unchecked');
 
-    casper.click('.resize-button');
+    casper.click('#resize-canvas-form .resize-button');
     // Resizing the piskel should close the panel automatically
     casper.waitForSelector('[data-pskl-controller="settings"]:not(.expanded)', onDrawerClosed, test.timeout, 10000);
   }
