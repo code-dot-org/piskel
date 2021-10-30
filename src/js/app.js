@@ -196,7 +196,7 @@
       this.penSizeController = new pskl.controller.PenSizeController(i18n);
       this.penSizeController.init();
 
-      this.fileDropperService = new pskl.service.FileDropperService(this.piskelController);
+      this.fileDropperService = new cdo.service.FileDropperService();
       this.fileDropperService.init();
 
       // Service that can interact with a parent application via the PiskelApi
