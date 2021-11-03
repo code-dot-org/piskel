@@ -16,9 +16,6 @@
     document.body.addEventListener('dragover', this.onFileDragOver.bind(this), false);
   };
 
-  // TODO: does stopping propagation make sense?
-  // should that be in the main repo?
-  // does this "break" anything? (already exists)
   ns.FileDropperService.prototype.onFileDragOver = function (event) {
     event.preventDefault();
     event.stopPropagation();
