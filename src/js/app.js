@@ -4,6 +4,8 @@
  */
 (function () {
   var ns = $.namespace('pskl');
+  var cdo = $.namespace('cdo');
+
   /**
    * Main application controller
    */
