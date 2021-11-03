@@ -267,7 +267,7 @@
   "js/worker/imageprocessor/ImageProcessor.js",
 
   // Code.org Scripts
-  "code-dot-org/js/service/FileDropperService.js",
+  "js/codeorg/service/FileDropperService.js",
 
   // Application controller and initialization
   "js/app.js",
