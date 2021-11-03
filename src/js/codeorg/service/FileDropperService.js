@@ -1,9 +1,9 @@
 /**
  * This service stubs or overrides all methods on the Piskel FileDropperService
- * (./js/service/FileDropperService.js) as code.org users are not allowed
+ * (src/js/service/FileDropperService.js) as code.org users are not allowed
  * to drag-and-drop files to upload them.
  *
- * This service is initialized in place of the original in ./js/app.js
+ * This service is initialized in place of the original in src/js/app.js
  */
 
 (function () {

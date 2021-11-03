@@ -1,5 +1,5 @@
 /**
- * This service is overridden by ./code-dot-org/js/service/FileDropperService.js.
+ * This service is overridden by src/js/codeorg/service/FileDropperService.js.
  * Code.org users are not allowed to upload files by drag-and-drop, so this service
  * should no longer be used.
  */
