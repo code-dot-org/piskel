@@ -1,6 +1,6 @@
 {
   "name": "@code-dot-org/piskel",
-  "version": "0.13.0-cdo.7",
+  "version": "0.13.0-cdo.8",
   "description": "Code.org fork of juliandescottes/piskel for use within the Code Studio learning environment.",
   "author": "Julian Descottes <julian.descottes@gmail.com>",
   "contributors": [
