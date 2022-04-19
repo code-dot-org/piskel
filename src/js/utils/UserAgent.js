@@ -23,7 +23,8 @@
     'isIE11',
     'isEdge',
     'isChrome',
-    'isFirefox'
+    'isFirefox',
+    'isSafari'
   ];
 
   ns.UserAgent.version = (function () {
