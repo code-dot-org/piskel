@@ -144,7 +144,9 @@
         frameSizeX,
         frameSizeY,
         /*useHorizonalStrips=*/ true,
-        /*ignoreEmptyFrames=*/ true);
+        // Don't ignore empty frames, as we will still animate them in the gif.
+        // Hiding them leads to confusing behavior.
+        /*ignoreEmptyFrames=*/ false);
   };
 
   /**
