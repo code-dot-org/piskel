@@ -28,7 +28,7 @@ Note: To run local integration tests you should install CasperJS 1.0.2 (not incl
 
 ### Prerequisite
 To build Piskel, you need to :
-- install [node](https://nodejs.org/)
+- install [node](https://nodejs.org/). This repo works best with Node version 10.
 - install grunt-cli `npm install grunt-cli -g`.
 - run `npm install`
 
@@ -48,8 +48,8 @@ To build Piskel, you need to :
 
 ## Publishing a new version
 
-This repository depends on a Node version >=7. Please use Node >=7 when building and updating
-new releases of this Piskel to NPM.
+This repository depends on a Node version >=7 and < 11. Please use Node >=7 and < 11 when building and updating
+new releases of this Piskel to NPM. 
 
 To publish a new version to npm switch to the master branch, use `npm login` to sign in as an account with access to the `@code-dot-org` scope, then `npm version [major|minor|patch]` for the appropriate version bump.  This will do the following:
 
@@ -58,6 +58,8 @@ To publish a new version to npm switch to the master branch, use `npm login` to 
 * Bump the version, adding a corresponding commit and version tag.
 * Push the commit and tag to github.
 * Publish the new release package to npm.
+
+If you see an error in the tests around missing python (`env: python: Not a directory`), install a version of python 2 (for example, [2.17.8](https://www.python.org/downloads/release/python-2718/)).
 
 ## Internationalization (i18n)
 The Piskel UI can support different languages by setting the `window.piskel_locale` to a four letter locale code, i.e. `en_us`, `es_mx`, etc.
