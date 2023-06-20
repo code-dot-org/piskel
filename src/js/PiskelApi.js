@@ -85,6 +85,9 @@ var PiskelApi = (function (module) {
 
     // Use a restricted set of tools [Spritelab/Gamelab]
     USE_RESTRICTED: 'USE_RESTRICTED',
+
+    // Add a blank frame to the current piskel
+    ADD_BLANK_FRAME: 'ADD_BLANK_FRAME',
   };
 
   /**
@@ -119,9 +122,12 @@ var PiskelApi = (function (module) {
    *        pixels.
    * @param {number} [frameRate] - Animation rate in frames per second.
    * @param {function} [onComplete] - Called when the spritesheet is loaded.
+   * @param {number} [frameCount] - Maximum number of frames to display. If undefined,
+  *          show all possible frames.
    * @see https://developer.mozilla.org/en-US/docs/Web/HTTP/data_URIs
    */
-  PiskelApi.prototype.loadSpritesheet = function (uri, frameSizeX, frameSizeY, frameRate, onComplete) {
+  PiskelApi.prototype.loadSpritesheet = function (uri, frameSizeX, frameSizeY,
+      frameRate, onComplete, frameCount) {
     onComplete = typeof onComplete === 'function' ? onComplete : Constants.EMPTY_FUNCTION;
     this.callBackOnce_(PiskelApi.MessageType.ANIMATION_LOADED, onComplete);
 
@@ -131,7 +137,8 @@ var PiskelApi = (function (module) {
       uri: uri,
       frameSizeX: frameSizeX,
       frameSizeY: frameSizeY,
-      frameRate: frameRate
+      frameRate: frameRate,
+      frameCount: frameCount
     });
   };
 
