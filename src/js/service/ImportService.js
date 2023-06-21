@@ -38,6 +38,7 @@
    *        - {Number}  frameOffsetX (only used in spritesheet imports)
    *        - {Number}  frameOffsetY (only used in spritesheet imports)
    *        - {Number}  frameRate - (in frames per second)
+   *        - {Number}  frameCount - maximum number of frames to display, or undefined to display all frames.
    * @param {Function} onComplete
    *        Callback called when the new piskel has been created, with the new piskel
    *        as single argument.
@@ -45,7 +46,7 @@
   ns.ImportService.prototype.newPiskelFromImage = function (image, options, onComplete) {
     var setPiskelFromFrameImages = function (frameImages) {
       var piskel = this.createPiskelFromImages_(frameImages, options.name, options.frameSizeX,
-          options.frameSizeY, options.smoothing);
+          options.frameSizeY, options.smoothing, options.frameCount);
       this.piskelController_.setPiskel(piskel);
     }.bind(this);
 
@@ -64,6 +65,7 @@
    * @param {number} [options.frameOffsetY] only used in spritesheet imports.
    * @param {!boolean} options.smoothing
    * @param {number} [options.frameRate] in frames per second
+   * @param {number} [options.frameCount] maximum number of frames to display, or undefined to display all frames.
    * @param {function} [onComplete]
    */
   ns.ImportService.prototype.importFramesFromImage = function (image, options, onComplete) {
@@ -89,6 +91,7 @@
     var smoothing = options.smoothing;
     var frameRate = typeof options.frameRate !== 'undefined' ?
         options.frameRate : Constants.DEFAULT.FPS;
+    var frameCount = options.frameCount;
 
     var gifLoader = new window.SuperGif({
       gif: image
@@ -106,7 +109,8 @@
           setPiskelFromFrameImages(images);
         } else {
           // Spritesheet
-          var frameImages = this.createImagesFromSheet_(images[0], frameSizeX, frameSizeY, frameOffsetX, frameOffsetY);
+          var frameImages = this.createImagesFromSheet_(images[0], frameSizeX,
+            frameSizeY, frameOffsetX, frameOffsetY, frameCount);
           setPiskelFromFrameImages(frameImages);
         }
         onComplete(piskel);
@@ -118,7 +122,8 @@
           setPiskelFromFrameImages([image]);
         } else {
           // Spritesheet
-          var frameImages = this.createImagesFromSheet_(image, frameSizeX, frameSizeY, frameOffsetX, frameOffsetY);
+          var frameImages = this.createImagesFromSheet_(image, frameSizeX, frameSizeY,
+            frameOffsetX, frameOffsetY, frameCount);
           setPiskelFromFrameImages(frameImages);
         }
         onComplete();
@@ -132,11 +137,12 @@
    * @param {!number} frameSizeY
    * @param {!number} frameOffsetX
    * @param {!number} frameOffsetY
+   * @param {!number} [frameCount]
    * @returns {canvas[]}
    * @private
    */
   ns.ImportService.prototype.createImagesFromSheet_ = function (image,
-      frameSizeX, frameSizeY, frameOffsetX, frameOffsetY) {
+      frameSizeX, frameSizeY, frameOffsetX, frameOffsetY, frameCount) {
     return pskl.utils.CanvasUtils.createFramesFromImage(
         image,
         frameOffsetX,
@@ -146,7 +152,8 @@
         /*useHorizonalStrips=*/ true,
         // Don't ignore empty frames, as we will still animate them in the gif.
         // Hiding them leads to confusing behavior.
-        /*ignoreEmptyFrames=*/ false);
+        /*ignoreEmptyFrames=*/ false,
+        frameCount);
   };
 
   /**

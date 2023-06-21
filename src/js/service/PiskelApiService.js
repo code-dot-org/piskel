@@ -120,7 +120,7 @@
       this.createNewPiskel(message.frameSizeX, message.frameSizeY, message.frameRate);
     } else if (message.type === MessageType.LOAD_SPRITESHEET) {
       this.loadSpritesheet(message.uri, message.frameSizeX, message.frameSizeY,
-          message.frameRate);
+          message.frameRate, message.frameCount);
     } else if (message.type === MessageType.TOGGLE_FRAME_COLUMN) {
       this.toggleFrameColumn(message.hideFrameColumn);
     } else if (message.type === MessageType.APPEND_FRAMES) {
@@ -160,9 +160,10 @@
    * @param {!number} frameSizeX
    * @param {!number} frameSizeY
    * @param {number} [frameRate]
+   * @param {number} [frameCount]
    */
   ns.PiskelApiService.prototype.loadSpritesheet = function (uri, frameSizeX,
-      frameSizeY, frameRate) {
+      frameSizeY, frameRate, frameCount) {
     $.publish(Events.LOAD_NEW_PISKEL);
 
     var image = new Image();
@@ -176,7 +177,8 @@
         frameOffsetX: 0,
         frameOffsetY: 0,
         smoothing: false,
-        frameRate: frameRate
+        frameRate: frameRate,
+        frameCount: frameCount
       }, function () {
         this.log('Image loaded.');
         // Report async load completed.

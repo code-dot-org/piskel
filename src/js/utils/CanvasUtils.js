@@ -45,15 +45,23 @@
      * right, False if it should use top to bottom
      * @param {Boolean} ignoreEmptyFrames True to ignore empty frames, except if
      * there are only empty frames -> then keep one, false to keep them.
+     * @param {number} frameCount Number of frames in the spritesheet to show (based on frame size parameters above).
+     *   If undefined, create as many frames as possible.
      * @returns {Array} An array of canvas elements that contain the split frames
      */
-    createFramesFromImage : function (image, offsetX, offsetY, width, height, useHorizonalStrips, ignoreEmptyFrames) {
+    createFramesFromImage : function (image, offsetX, offsetY, width, height,
+        useHorizonalStrips, ignoreEmptyFrames, frameCount) {
       var canvasArray = [];
       var x = offsetX;
       var y = offsetY;
       var blankData = pskl.utils.CanvasUtils.createCanvas(width, height).toDataURL();
+      var framesCreated = 0;
+      // If frame count is undefined, create as many frames as possible.
+      if (frameCount === undefined) {
+        frameCount = Number.MAX_VALUE;
+      }
 
-      while (x + width <= image.width && y + height <= image.height) {
+      while (x + width <= image.width && y + height <= image.height && framesCreated < frameCount) {
         // Create a new canvas element
         var canvas = pskl.utils.CanvasUtils.createCanvas(width, height);
         var context = canvas.getContext('2d');
@@ -98,6 +106,7 @@
             y = offsetY;
           }
         }
+        framesCreated++;
       }
 
       return canvasArray;
