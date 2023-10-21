@@ -85,6 +85,15 @@
     },
 
     /**
+     * Remove a user defined settings value.
+     */
+    clear : function (key) {
+      delete this.cache_[key]
+      window.localStorage.removeItem(key)
+      $.publish(Events.USER_SETTINGS_CHANGED, [key, undefined]);
+    },
+
+    /**
      * @private
      */
     readFromLocalStorage_ : function (key) {
