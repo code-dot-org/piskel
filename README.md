@@ -46,10 +46,17 @@ To build Piskel, you need to :
 #### Note: If you make new changes to JSON files, use `grunt build-dev`
 - If you added new strings to the JSON files in the locales directory and you want to see the changes, you need to do `grunt build-dev`
 
+#### play
+`grunt play` will:
+- build the application in debug mode
+- start a server on port 9901 (serving `dest` folder)
+- open a browser on `http://localhost:9901/?debug`
+- watch for changes, and rebuild the application if needed
+
 ## Publishing a new version
 
 This repository depends on a Node version >=7 and < 11. Please use Node >=7 and < 11 when building and updating
-new releases of this Piskel to NPM. 
+new releases of this Piskel to NPM.
 
 To publish a new version to npm switch to the master branch, use `npm login` to sign in as an account with access to the `@code-dot-org` scope, then `npm version [major|minor|patch]` for the appropriate version bump.  This will do the following:
 

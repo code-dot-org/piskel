@@ -64,7 +64,7 @@
       try {
         frame = new pskl.model.Frame(size.width, size.height);
       } catch (error) {
-        if (error.name == 'RangeError') {
+        if (error instanceof RangeError) {
           // The user set a default size that the browser can't handle. Reset to our defaults and
           // try again.
           pskl.UserSettings.clear(pskl.UserSettings.DEFAULT_SIZE);
