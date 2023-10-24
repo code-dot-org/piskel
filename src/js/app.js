@@ -60,10 +60,20 @@
       var size = pskl.UserSettings.get(pskl.UserSettings.DEFAULT_SIZE);
       var fps = Constants.DEFAULT.FPS;
       var descriptor = new pskl.model.piskel.Descriptor('New Piskel', '');
+      var frame;
+      try {
+        frame = new pskl.model.Frame(size.width, size.height);
+      } catch (error) {
+        if (error instanceof RangeError) {
+          // The user set a default size that the browser can't handle. Reset to our defaults and
+          // try again.
+          pskl.UserSettings.clear(pskl.UserSettings.DEFAULT_SIZE);
+          size = pskl.UserSettings.get(pskl.UserSettings.DEFAULT_SIZE);
+          frame = new pskl.model.Frame(size.width, size.height);
+        }
+      }
       var piskel = new pskl.model.Piskel(size.width, size.height, fps, descriptor);
-
       var layer = new pskl.model.Layer('Layer 1');
-      var frame = new pskl.model.Frame(size.width, size.height);
 
       layer.addFrame(frame);
       piskel.addLayer(layer);
