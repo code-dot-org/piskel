@@ -76,7 +76,7 @@ body {
 .tool-icon.icon-settings-resize-white,
 .tool-icon.icon-settings-export-white {
   height: 50px;
-  background-color: #7665a0;
+  background-color: #2B1E9F;
   border-left: none;
   border-top: none;
   border-bottom: none;
@@ -127,17 +127,18 @@ body {
 }
 
 .tool-icon {
-  background-color: #b7b7b7;
-  border: 2px solid #a5a5a6;
+  background-color: #87909A;
+  border: 2px solid #596069;
 }
 
+
 .tool-icon.selected {
-  background-color: #7665a0;
-  border: 2px solid #7665a0;
+  background-color: #2B1E9F;
+  border: 2px solid #2B1E9F;
 }
 
 .tool-icon:hover {
-  background-color: #7665a0;
+  background-color: #596069;
 }
 
 .tool-color-picker {
@@ -155,13 +156,13 @@ body {
 }
 
 .sp-replacer:hover {
-  background-color: #7665a0;
-  color: #7665a0;
+  background-color: #2B1E9F;
+  color: #2B1E9F;
 }
 
 .sp-replacer.sp-active {
-  background-color: #7665a0;
-  color: #7665a0;
+  background-color: #2B1E9F;
+  color: #2B1E9F;
 }
 
 .swap-colors-button {
@@ -201,35 +202,35 @@ body {
    Here's all the places we should set it to our color. */
 
 .local-piskel-list-head {
-  color: #7665a0;
+  color: #2B1E9F;
 }
 
 .create-palette-color:hover {
-  border:1px solid #7665a0;
+  border:1px solid #2B1E9F;
 }
 
 .colors-list-drop-proxy {
 }
 
 .create-palette-new-color {
-  border:2px dotted #7665a0;
-  color: #7665a0;
+  border:2px dotted #2B1E9F;
+  color: #2B1E9F;
 }
 
 .create-palette-color.selected {
-  border:2px solid #7665a0;
+  border:2px solid #2B1E9F;
 }
 
 .import-image-file-name {
-  color: #7665a0;
+  color: #2B1E9F;
 }
 
 #dialog-container {
-  border : 3px solid #7665a0;
+  border : 3px solid #2B1E9F;
 }
 
 .dialog-head {
-  background: #7665a0;
+  background: #2B1E9F;
 }
 
 .button:hover {
@@ -237,19 +238,18 @@ body {
 }
 
 .button-primary {
-  background-color: rgb(118,101,160);
-  color-border: rgb(255, 153, 0);
+  background-color: #4C42CF;
   border: none;
   color: #fff;
   text-shadow: none;
 }
 
 .button-primary:hover {
-  background-color: rgb(118,101,160);
+  background-color: #2B1E9F;
 }
 
 .add-frame-action:hover {
-  border-color: #7665a0;
+  border-color: #2B1E9F;
 }
 
 .preview-tile {
@@ -257,76 +257,78 @@ body {
 }
 
 .preview-tile.selected {
-  border: 3px solid #7665a0;
+  border: 3px solid #2B1E9F;
 }
 
 .preview-tile.selected:after {
-  border-left-color: #7665a0;
+  border-left-color: #2B1E9F;
 }
 
 .preview-tile-drop-proxy {
-  border: 1px dashed #7665a0;
+  border: 1px dashed #2B1E9F;
 }
 
 .progress-bar-container {
-  border: #7665a0 2px solid;
+  border: #2B1E9F 2px solid;
 }
 
 .progress-bar {
-  background : linear-gradient(to left, #7665a0, #7665a0) no-repeat -300px 0;
+  background : linear-gradient(to left, #2B1E9F, #2B1E9F) no-repeat -300px 0;
 }
 
 .pen-size-option {
-  background-color: #b7b7b7;
-  border-color: #a5a5a6;
+  background-color: #87909A;
+  border-color: #596069;
 }
 
 .pen-size-option:hover {
-  border-color: #a5a5a6;
+  background-color: #596069;
+  border-color: #596069;
 }
 
 .pen-size-option.selected:before {
-  background-color: #7665a0;
+  background-color: #fff;
 }
 
 .pen-size-option.selected {
-  border-color: #7665a0;
+  border-color: #2B1E9F;
+  background-color: #2B1E9F;
 }
 
 a, a:visited {
-  color:#7665a0;
+  color:#2B1E9F;
 }
 
 .background-picker.selected {
-  border-color: #7665a0;
+  border-color: #2B1E9F;
 }
 
 .resize-origin-option.selected {
-  border : 3px solid #7665a0;
+  border : 3px solid #2B1E9F;
 }
 
 .resize-origin-option.selected:before {
-  background: #7665a0;
+  background: #2B1E9F;
 }
 
 .resize-origin-option[data-neighbor="bottom"]:before {
-  border-top-color: #7665a0;
+  border-top-color: #2B1E9F;
 }
 
 .resize-origin-option[data-neighbor="left"]:before {
-  border-right-color: #7665a0;
+  border-right-color: #2B1E9F;
 }
 
 .resize-origin-option[data-neighbor="top"]:before {
-  border-bottom-color: #7665a0;
+  border-bottom-color: #2B1E9F;
 }
 
 .resize-origin-option[data-neighbor="right"]:before {
-  border-left-color: #7665a0;
+  border-left-color: #2B1E9F;
 }
 
 .right-sticky-section .tool-icon.has-expanded-drawer {
-  border-left : 3px solid #7665a0;
+  border-left : 3px solid #2B1E9F;
 }
 
 .settings-title {
@@ -335,52 +337,52 @@ a, a:visited {
 }
 
 .sp-palette .sp-thumb-el.sp-thumb-active {
-  border-color: #7665a0;
-  box-shadow: 0 0 0px 1px #7665a0;
+  border-color: #2B1E9F;
+  box-shadow: 0 0 0px 1px #2B1E9F;
 }
 
 .image-link {
-  color : #7665a0;
+  color : #2B1E9F;
 }
 
 .tooltip-shortcut {
-  color:#7665a0;
+  color:#fff;
 }
 
 .preview-toggle-onion-skin-enabled,
 .preview-toggle-onion-skin-enabled:hover {
-  color : #7665a0;
+  color : #2B1E9F;
 }
 
 .original-size-button-enabled {
-  color: #7665a0;
-  border-color: #7665a0;
+  color: #2B1E9F;
+  border-color: #2B1E9F;
 }
 
 .open-popup-preview-button:hover {
-  border-color: #7665a0;
+  border-color: #2B1E9F;
 }
 
 .layers-toggle-preview-enabled,
 .layers-toggle-preview-enabled:hover {
-  color : #7665a0;
+  color : #2B1E9F;
 }
 
 .current-layer-item,
 .current-layer-item:hover {
-  color: #7665a0;
+  color: #2B1E9F;
 }
 
 .palettes-list-color:nth-child(-n+10):after {
-  color: #7665a0;
+  color: #2B1E9F;
 }
 
 .tool-icon.selected:before {
-  border: 3px solid #7665a0;
+  border: 3px solid #2B1E9F;
 }
 
 .cursor-coordinates {
-  color: #7665a0;
+  color: #2B1E9F;
 }
 
 .tab-list:after {
@@ -397,5 +399,5 @@ a, a:visited {
 }
 
 span.highlight {
-  color:#7665a0;
+  color:#fff;
 }
