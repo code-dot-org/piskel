@@ -25,12 +25,13 @@
     var canvas = this.createCanvas_();
 
     // Draw in canvas
-    pskl.utils.FrameUtils.drawToCanvas(this.frame, canvas, this.transparentColor_, this.opacity_);
+    pskl.utils.FrameUtils.drawToCanvas(this.frame, canvas, this.transparentColor_);
 
     var scaledCanvas = this.createCanvas_(this.zoom);
     var scaledContext = scaledCanvas.getContext('2d');
     pskl.utils.CanvasUtils.disableImageSmoothing(scaledCanvas);
     scaledContext.scale(this.zoom, this.zoom);
+    scaledContext.globalAlpha = this.opacity_;
     scaledContext.drawImage(canvas, 0, 0);
 
     return scaledCanvas;
