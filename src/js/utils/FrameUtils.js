@@ -1,6 +1,7 @@
 (function () {
   var ns = $.namespace('pskl.utils');
   var colorCache = {};
+  var imageDataPool = {};
   ns.FrameUtils = {
     /**
      * Render a Frame object as an image.
@@ -20,17 +21,15 @@
     },
 
     /**
-     * Draw the provided frame in a 2d canvas
+     * Draw the provided frame in a 2d canvas. A Frame's pixels replace what the
+     * canvas held; callers that need opacity apply it when they draw the canvas.
      *
      * @param {Frame|RenderedFrame} frame the frame to draw
-     * @param {Canvas} canvas the canvas target
+     * @param {Canvas} canvas the canvas target, sized to the frame
      * @param {String} transparentColor (optional) color to use to represent transparent pixels.
-     * @param {String} globalAlpha (optional) global frame opacity
      */
-    drawToCanvas : function (frame, canvas, transparentColor, globalAlpha) {
+    drawToCanvas : function (frame, canvas, transparentColor) {
       var context = canvas.getContext('2d');
-      globalAlpha = isNaN(globalAlpha) ? 1 : globalAlpha;
-      context.globalAlpha = globalAlpha;
       transparentColor = transparentColor || Constants.TRANSPARENT_COLOR;
 
       if (frame instanceof pskl.model.frame.RenderedFrame) {
@@ -53,14 +52,16 @@
           }
         }
 
-        // Safari can draw a stale copy of a reused canvas after putImageData.
-        var offCanvas = pskl.utils.CanvasUtils.createCanvas(w, h);
-        var offContext = offCanvas.getContext('2d');
-        var imageData = offContext.createImageData(w, h);
+        // Write the pixels straight into the target, with no scratch canvas in
+        // between: Safari drew stale frames from the scratch canvas that every
+        // renderer used to share.
+        var imageDataKey = w + '-' + h;
+        var imageData = imageDataPool[imageDataKey];
+        if (!imageData) {
+          imageData = imageDataPool[imageDataKey] = context.createImageData(w, h);
+        }
         imageData.data.set(new Uint8ClampedArray(pixels.buffer));
-        offContext.putImageData(imageData, 0, 0);
-        context.drawImage(offCanvas, 0, 0, w, h);
-        context.globalAlpha = 1;
+        context.putImageData(imageData, 0, 0);
       }
     },
 
